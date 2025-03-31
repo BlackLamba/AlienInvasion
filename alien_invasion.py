@@ -5,7 +5,7 @@ from time import sleep
 from settings import Settings
 from game_stats import GameStats
 from scoreboard import Scoreboard
-from button import  Button
+from button import  Button, DiffButton
 from ship import Ship
 from bullet import Bullet
 from alien import Alien
@@ -41,6 +41,10 @@ class AlienInvasion:
 
 		# Создание кнопки Play.
 		self.play_button = Button(self, "Play")
+		# Создание кнопок сложности.
+		self.set_easy_button = DiffButton(self, 'Easy')
+		self.set_medium_button = DiffButton(self, 'Medium')
+		self.set_hard_button = DiffButton(self, 'Hard')
 
 	def run_game(self):
 		"""Запускает основной цикл игры."""
@@ -252,6 +256,9 @@ class AlienInvasion:
 		# Кнопка Play отображается в том случае, если игра неактивна.
 		if not self.game_active:
 			self.play_button.draw_button()
+			self.set_easy_button.draw_button()
+			self.set_medium_button.draw_button()
+			self.set_hard_button.draw_button()
 
 		pygame.display.flip()
 
